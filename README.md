@@ -1,0 +1,3 @@
+# AnimationSchool
+
+Webinars and classes
