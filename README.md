@@ -1,3 +1,5 @@
-# AnimationSchool
+# AnimationSchool (RUS)
 
-Webinars and classes
+Материалы для вебинаров и лекций
+
+
