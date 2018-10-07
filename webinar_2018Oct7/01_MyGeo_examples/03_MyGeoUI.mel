@@ -1,0 +1,28 @@
+proc MyGeo(string $geo)
+{
+    if($geo == "cube"){
+        polyCube -w 10 -h 3 -d 3 -sx 10 -sy 2 -sz 2 -ch 1;
+    }
+    else if($geo == "sphere"){
+        polySphere -r 1 -sx 20 -sy 20 -ch 1;
+    }
+    else if($geo == "torus"){
+        polyTorus -r 1 -sr 0.5 -tw 0 -sx 20 -sy 20 -ch 1;
+    }
+}
+
+//check if window MyGeoWindow exists (yes - delete it)
+if(`window -exists MyGeoWndow`){
+    deleteUI MyGeoWndow;
+}
+
+window -title "MyGeo" -widthHeight 300 50 MyGeoWndow;
+
+//all UI elements should be placed in layouts
+gridLayout -numberOfColumns 3 -cellWidthHeight 100 50;
+    
+    button -label "Sphere" -command "MyGeo(\"sphere\")";
+    button -label "Cube" -command "MyGeo(\"cube\")";
+    button -label "Torus" -command "MyGeo(\"torus\")";
+    
+showWindow MyGeoWndow;
