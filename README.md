@@ -2,7 +2,7 @@
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
-# AnimationSchool (RUS)
+# AnimationSchool 
 
 Материалы для вебинаров и лекций
 
