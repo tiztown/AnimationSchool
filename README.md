@@ -6,7 +6,7 @@
 
 # AnimationSchool 
 
-Вебинар можно посмотреть [a link](https://www.youtube.com/watch?v=QFGVcfXZgyQ)
+Вебинар можно посмотреть [здесь](https://www.youtube.com/watch?v=QFGVcfXZgyQ)
 
 Материалы для вебинаров и лекций
 
