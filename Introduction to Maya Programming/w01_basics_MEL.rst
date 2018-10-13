@@ -53,7 +53,7 @@ MEL команда очень проста для понимания. Если �
 
 .. code-block:: cpp
 
-        string $myName = “Roman”;
+    string $myName = “Roman”;
     int $myAge = 30;
     float $PI = 3.14;
     $someNumber  = 13;
