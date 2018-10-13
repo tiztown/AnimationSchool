@@ -7,6 +7,8 @@
 
 Вебинар можно посмотреть [здесь](https://www.youtube.com/watch?v=QFGVcfXZgyQ)
 
+Стрим "Автоматизация в кино и игровой индустрии" можно посмотреть [здесь](https://www.youtube.com/watch?v=HkjuB2GV6oU)
+
 Материалы для вебинаров и лекций
 
 
