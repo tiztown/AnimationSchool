@@ -38,4 +38,6 @@ MEL
 
 .. code-block:: cpp
 
+    Команда -атрибуты имяOбъекта;
+
     move -relative 2 0 0 pSphere1;
