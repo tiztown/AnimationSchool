@@ -220,4 +220,4 @@ MEL команда очень проста для понимания. Если �
         break;
     }
 
-[Conditions] (http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-52547837-1BD7-4CA5-A8D3-BDEBE932F535)
+`Conditions <http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-52547837-1BD7-4CA5-A8D3-BDEBE932F535>`_
