@@ -16,4 +16,10 @@ Python. Introduction
 Так вот Python это художник, который несколькими мазками маслом на холсте получает уже готовую картину, красивую и элегантную, ничего лишнего и сложного, но в то же время захватывающую.
 
 
+.. figure:: res/python-logo-generic.svg
+    :align: left
+    :alt: alternate text
+    :figclass: align-center
+
+
 21 Октября. 18 МСК
