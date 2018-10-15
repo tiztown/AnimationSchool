@@ -1,7 +1,5 @@
 
 
-
-
 global proc lockKeyableAttrs(string $object, int $animControl){
     /*
     Lock all keyable attributes (displayed in Channel Box)
