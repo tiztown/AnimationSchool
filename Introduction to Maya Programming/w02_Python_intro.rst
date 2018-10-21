@@ -391,7 +391,7 @@ Python. Introduction
 
 .. code-block:: python
 
-    for i, index in enumerate(myList):
+    for index, i  in enumerate(myList):
 
         print i #напечатает сам элемент
 
