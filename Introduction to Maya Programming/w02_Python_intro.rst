@@ -286,17 +286,17 @@ Python. Introduction
 
     a = 13
 
-    If a < 10:
+    if a < 10:
 
-        print “less”
+        print "less"
 
     elif a > 20:
 
-        print “more”
+        print "more"
 
     else:
 
-        print “OK”
+        print "ok"
 
 
 Как и в других языках, операторы сравнения в Python выглядят та же:
