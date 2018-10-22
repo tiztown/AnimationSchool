@@ -353,7 +353,7 @@ Python. Introduction
 
 .. code-block:: python
 
-    myList = [“Cat”, “Dog”, Bird”]
+    myList = ["Cat", "Dog", "Bird"]
 
     for i in myList:
         print i
@@ -444,7 +444,7 @@ Python. Introduction
 
 .. code-block:: python
 
-    myFoo(a = “dog”, b = “cat”, c = “bird”)
+    myFoo(a = "dog", b = "cat", c = "bird")
 
 Но что делать, если у нас при вызове myFoo некоторые аргументы практически всегда имеют одни и те же значение, например “c” всегда будет “bird” и в редких случаях что-то еще. Как вариант, мы можем аргументам назначить значение по умолчанию, и если мы будем вызывать эту функцию, нам лишь нужно будет передать новые значения некоторых аргументов.
 
@@ -455,8 +455,8 @@ Python. Introduction
         print a, b, c
 
     myFoo()
-    myFoo(b = “dog”)
-    myFoo(a = 23, c = “cat”)
+    myFoo(b = "dog")
+    myFoo(a = 23, c = "cat")
 
 
 Поскольку каждая функция, должна в итоге возвращать какое то значение (чтобы мы могли, например, присвоить переменной функцию), мы используем ключевое слово return и далее что мы хотим возвратить. Например:
@@ -479,7 +479,7 @@ Python. Introduction
 
 .. code-block:: python
 
-    return [“a”, 1, str(1.4), someFoo(), <<Some Crazy Thing>>, [“array”, “of”,  “crazy”, “things], {dict} ]
+    return [“a”, 1, str(1.4), someFoo(), <<Some Crazy Thing>>, ["array", "of",  "crazy", "things"], {dict} ]
 
 
 Try...Except
