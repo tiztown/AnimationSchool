@@ -15,4 +15,4 @@
     :alt: alternate text
     :figclass: align-center
 
-28 Окт, МСК
+28 Окт, МСК 18:00
