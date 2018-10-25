@@ -47,3 +47,170 @@
 
         def grill(self, food = None):
             print (food + "has been grilled")
+
+    cook_1 = Cook()
+    cook_2 = Cook()
+
+В данном примере, Cook - это класс повара. Но мы не можем использовать этот класс по себе (можем конечно, но об этом дальше). Мы должны взять человека ( в нашем случае переменную), и сделать его поваром, выполнив cook_1 = Cook(). Мы можем сделать сколько угодно переменных-поваров, однако иногда в этом нет смысла и нам достаточно одного повара. 
+
+Теперь, наш повар умеет делать все что прописано в классе Cook. Чтобы повар пожарил еду, мы выполним следующее.
+
+.. code-block:: python
+
+    cook_1.boil(food = "chicken") #  output: chicken has been boiled
+    cook_1.grill(food = "fish") # fish has been grilled
+
+Внутри класса, мы используем ключевое слово **self**, которое дает Питону понять, что эта функция принадлежит именно этому классу а не взята извне.  Так же мы в классе можем объявлять переменные,  которые будут начинаться с self:
+
+.. code-block:: python
+
+    self.myVar = 15
+    print self.myVar
+
+То же самое и с функциями, как только мы создали функцию внутри класса и в качестве первого аргумента указали self - эта функция автоматически становится видной для других функций класса. Вызывать такую функцию внутри класса нужно через self (как и переменную)
+
+.. code-block:: python
+
+    self.grill(food = "some food")
+
+Если мы создадим несколько объектов класса (cook_1, cook_2) - в чем тогда смысл если они делают одно и то же?  А вот и не одно и то же, каждый объект класса может иметь уникальные свойства (повара бывают плохие, хорошие, старые, молодые, больные - и все это влияет на качество приготовления еды и на результат работы класса). В классе существует уникальная функция, которая запускается каждый раз, когда мы создаем новый объект. Называется она initialize и пишется def ** __init__(self)**. В нее мы можем передать аргументы, и использовать их в дальнейшем в классе, например:
+
+.. code-block:: python
+
+    class Cook():
+
+        def __init__(self, cookName = None, cookAge = None, cookLevel = 0):
+
+            self.name = cookName
+            self.age = cookAge
+            self.level = cookLevel
+
+        def fry(self, food = None):
+            print (food + " has been fried")
+
+        def boil(self, food = None):
+            print (food + " has been boiled")
+
+        def grill(self, food = None):
+            print (food + "has been grilled")
+
+    cook_1 = Cook(cookName = "Bob", cookAge = "45", cookLevel = 80)
+    cook_2 = Cook(cookName = "Bill", cookAge = "25", cookLevel = 45)
+
+    print cook_1.name   #Bob
+    print cook_1.age    #45
+    print cook_1.level  #80
+
+
+В примере выше мы создали повара, и дали ему уникальное имя, возраст и его уровень готовки. Всю эту информацию мы можем использовать в различных функциях класса, причем чтобы получить доступ к переменной, или сохранить в нее результат, больше не нужны никакие дополнительные действия как глобальные переменные - мы просто пишем имя переменной где нужно, и она будет доступной.
+
+.. code-block:: python
+
+    def fry(self, food  = None):
+        self.level = self.level + 1  #increase cook level
+        print (food + " has been fried")  
+
+Теперь для всех функций класса, где бы мы снова не обратились к переменной self.level - она будет уже на одну единичку больше. 
+
+Мы так же можем создавать и обычные перменные внутри класса, однако в какой бы функции мы не создали эту переменную, другие функции о ней ничего не узнают.
+
+.. code-block:: python
+
+    def grill(self, food  = None):
+        a = 13   # a available only in grill method
+        self.b = "cat"
+        print (food + " has been grilled")    
+
+    def boil(self, food = None):
+        # I have no idea what "a" means :(
+        # but I know what "self.b" is   :)
+
+Давайте создадим класс, где вкус и цена еды зависит от уровня повара а так же от возраста еды. А так же немного улучшим работу нашего класса.
+
+.. code-block:: python
+
+    class Cook():
+
+        def __init__(self, cookName = None, cookAge = None, cookLevel = 0):
+            # here we initialize the whole class for a specific object
+
+            #cook personal data
+            self.name = cookName
+            self.age = cookAge
+            self.level = cookLevel
+
+            #we don't know food parameters, but we are going to calculate them
+            self.food = None
+            self.foodAge = None
+            self.foodTaste = 0
+            self.foodPrice = 0
+            self.foodTasteDescription = ""
+
+        def takeFood(self, food = None, foodAge = 1):
+
+            #Reads food info and saves that info to class variables
+
+            if food == None:
+                print ("ERROR: I didn't get any food")
+                
+            self.food = food
+            self.foodAge = foodAge
+
+        def calculateFoodValue(self):
+
+            #Calculates food taste and price
+
+            self.foodTaste = self.level - self.foodAge
+
+            if self.foodTaste > 70:
+                self.foodPrice = "100$"
+                self.foodTasteDescription = "Luxury"
+
+            elif self.foodTaste < 70 and self.foodTaste > 40:
+                self.foodPrice = "70$"
+                self.foodTasteDescription = "Delicious"
+
+            else:
+                self.foodPrice = "30$"
+                self.foodTasteDescription = "Regular"
+
+        def serveFood(self):
+
+            #final method
+
+            self.calculateFoodValue()
+            print (self.foodTasteDescription + " " + self.food + ", sir! The price is " + self.foodPrice)
+
+        def fry(self):
+            print (self.food + " has been fried")
+            self.serveFood()
+
+        def boil(self):
+            print (self.food + " has been boiled")
+            self.serveFood()
+
+        def grill(self):
+            print (self.food + " has been grilled")
+            self.serveFood()
+
+
+    cook_1 = Cook(cookName = "Bob", cookAge = "45", cookLevel = 80) #create class object
+    cook_1.takeFood(food = "chiken", foodAge = 20) #execute class method
+    cook_1.grill() #execute another class method
+
+    """
+    prints:
+        chiken has been grilled
+        Delicious chiken, sir! The price is 70$
+    """
+
+    cook_1 = Cook(cookName = "Bill", cookAge = "25", cookLevel = 40) #create class object
+    cook_1.takeFood(food = "fish", foodAge = 8) #execute class method
+    cook_1.boil() #execute another class method
+
+    """
+    prints:
+        fish has been boiled
+        Regular fish, sir! The price is 30$
+    """
+
