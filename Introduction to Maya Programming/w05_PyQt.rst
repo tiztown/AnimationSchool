@@ -78,8 +78,64 @@
 Мы так же добавили функцию MEL - cmds.deleteUI, которая удаляет все окна, у которых идентификатор равняется "mynewdlg", чтобы избежать проблемы создания нескольких окон одновременно.
 
 
-Создание элементов UI (кнопки, крутилки, вертелки и т.д.)
----------------------------------------------------------
+Создание элементов UI - Layouts
+-------------------------------
 
+Прежде чем добавлять в интерфейс какие-либо элементы, следует понимать что такое Layout. Layout - это особый объект (можно думать о нем как о коробке), в который помещаются виджеты, например кнопки, списки, меню. Причем, от того, какой layout мы использовали - виджеты будут располагаться в нем либо горизонтально, либо вертикально, либо как в сетке - в заданной позиции. 
 
+Есть несколько видов layout - **QHBoxLayout** (элемента расположены в нем строго горизонтально), **QVBoxLayout** (элементы расположены вертикально), **QGridLayout** (элементы расположены по сетке - с указанием колонки и ряда) и **QFormLayout** (где элементы расположены в две колонки - обычно это какое то слово и поле куда нужно что-то ввести, как на сайте во время регистрации).
+
+Как правило у нас изначально в интерфейсе нет никаких layout, а значит мы не можем в главное окно добавить виджеты. Как правило то, какие Layout добавлять - решать программисту. Причем в каждый Layout можно давить другие layouts, и в них еще layouts. 
+
+Рассмотрим пример, когда мы добавим QVBoxLayout, чтобы наши элементы UI располагались вертикально.
+
+.. code-block:: python
+
+  class MyDialog(QtWidgets.QDialog):
+
+    def __init__(self, parent = None):
+        super(MyDialog, self).__init__() #run __init__ from inherited class - QDialog
+        self.setWindowTitle("My new dialog") 
+        self.setObjectName("mynewdlg") 
+
+        self.main_layout = QtWidgets.QVBoxLayout() # create Qt Vertical Box Layout
+
+        self.setLayout(self.main_layout) # Here we set self.main_layout as main layout for MyDialog widget.
+        
+Теперь мы можем в self.main_layout добавлять различные виджеты либо другие layouts.
+
+.. code-block:: python
+
+  class MyDialog(QtWidgets.QDialog):
+
+      def __init__(self, parent = None):
+          super(MyDialog, self).__init__() #run __init__ from inherited class - QDialog
+          self.setWindowTitle("My new dialog") 
+          self.setObjectName("mynewdlg") 
+
+          self.main_layout = QtWidgets.QVBoxLayout() # create Qt Vertical Box Layout
+          self.setLayout(self.main_layout) # Here we set self.main_layout as main layout for MyDialog widget.
+
+          self.button_01 = QtWidgets.QPushButton("Button 01") # create button widget
+          self.button_02 = QtWidgets.QPushButton("Button 02")
+          self.button_03 = QtWidgets.QPushButton("Button 03")
+
+          self.main_layout.addWidget(self.button_01) # add button widget to our layout
+          self.main_layout.addWidget(self.button_02)
+          self.main_layout.addWidget(self.button_03)
+          
+          # if we want to add new layout to self.main_layout
+          self.horizontal_layout = QtWidgets.QHBoxLayout() # create Qt Horizontal Box Layout
+          
+          self.main_layout.addLayout(self.horizontal_layout) # our new layout is located below the buttons
+          
+          #now we can add new buttons to a new layout and the will be located horizontally below other buttons
+          
+          self.h_button_1 = QtWidgets.QPushButton("Horz Button 01")
+          self.h_button_2 = QtWidgets.QPushButton("Horz Button 02")
+          self.h_button_3 = QtWidgets.QPushButton("Horz Button 03")
+          
+          self.horizontal_layout.addWidget(self.h_button_1)
+          self.horizontal_layout.addWidget(self.h_button_2)
+          self.horizontal_layout.addWidget(self.h_button_3)
 
